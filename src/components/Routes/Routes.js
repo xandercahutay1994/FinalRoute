@@ -5,11 +5,9 @@ import {
     Route
   } from 'react-router-dom'
 
-
-const Routes = ({isLogin}) => {
-    
-    return (
-        isLogin ?
+const Routes = props => {
+   
+    return props.islogin ?
             privateRoutes.map((route, i) => (
                 <Route key={i} exact {...route} />
             ))
@@ -17,8 +15,6 @@ const Routes = ({isLogin}) => {
             publicRoutes.map((route, i) => (
                 <Route key={i} exact {...route} />
             ))
-
-    )
 }
 
 export default Routes

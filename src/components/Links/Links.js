@@ -2,11 +2,12 @@ import React from 'react'
 import PublicLinks from './publicLinks'
 import PrivateLinks from './privateLinks'
 
-export default({isLogin})=> {
+export default( props)=> {
+    const { islogin } = props
 
     return (
-        isLogin ?
-            <PrivateLinks/>
+        islogin ?
+            <PrivateLinks {...props}/>
         :
             <PublicLinks/>
     )

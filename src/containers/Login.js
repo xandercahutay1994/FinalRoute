@@ -14,9 +14,6 @@ class Login extends React.PureComponent {
     }
   }
 
-  componentWillUpdate() {
-    console.log(this.props)
-  }
 
   handleOnChange = e => {
     const { name, value } = e.target
@@ -31,7 +28,7 @@ class Login extends React.PureComponent {
     if (this.state.username === 'xander') {
       this.props.dispatch(LoginUser())
 
-      this.props.history.push('/seller')
+      // this.props.history.push('/seller')
     }
   }
 

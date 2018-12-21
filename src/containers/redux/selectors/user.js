@@ -4,7 +4,7 @@ export default createSelector(
     state=> state.user,
     (user)=>{
         return {
-            isLogin: user.isLogin
+            islogin: user.islogin
         }
     }
 

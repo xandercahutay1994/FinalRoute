@@ -4,12 +4,12 @@ import {
 import {createReducer} from './createReducer'
 
 const userState = {
-    isLogin : false
+    islogin : false
 }
 
 const userActionsHandler = {
     LOGIN_USER: (state) => {
-        return { ...state, isLogin: true }
+        return { ...state, islogin: true }
     }
 }
 

@@ -1,37 +1,63 @@
 import React from 'react'
 import {
   BrowserRouter,
-  Switch
+  Router,
+  Switch,
+  Route
 } from 'react-router-dom'
 import Header from '../components/Layouts/Header'
 import Routes from '../components/Routes/Routes'
 import { connect } from 'react-redux'
 import { compose } from 'recompose'
 import { userSelector } from './redux/selectors'
+import { createBrowserHistory } from 'history'
+import privateRoutes from '../components/Routes/privateRoutes';
+import publicRoutes from '../components/Routes/publicRoutes';
 
+const history = createBrowserHistory()
 class Index extends React.PureComponent {
 
   constructor() {
     super()
     this.state = {
-      isLogin: false
+      islogin: false
     }
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    
+    if (props.islogin) {
+      history.push('/seller')
+      // privateRoutes.map((route, i) => (
+      //   <Route key={i} exact {...route} />
+      // ))
+
+    }
+
+    return null
+  }
+
+  handleLogout = () => {
+    this.setState({
+      islogin: false
+    })
   }
 
   render() {
     const {
-      isLogin
+      islogin
     } = this.props
 
+
     return(
-      <BrowserRouter>
+      <Router history={history}>
         <div className='container-fluid'>
-          <Header isLogin={isLogin}/>
+          <Header islogin={islogin} logout={this.handleLogout}/>
           <Switch>
-            <Routes isLogin={isLogin}/>
+            <Routes islogin={islogin}/>
           </Switch>
         </div>
-      </BrowserRouter>
+      </Router>
     )
   }
 }
